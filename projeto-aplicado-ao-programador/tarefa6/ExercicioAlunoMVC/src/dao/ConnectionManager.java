@@ -29,14 +29,17 @@ public class ConnectionManager {
         return conn;
     }
 
-    public Connection getConnection() throws ClassNotFoundException, SQLException {
+    public Connection getConnection() throws SQLException {
         //localiza e carrega o driver do mysql
-        Class.forName("com.mysql.jdbc.Driver");
-        
-        //faz a conexão com o banco de dados
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Falha ao conectar.");
+        }
+
         return DriverManager.getConnection(
-            "jdbc:mysql://localhost/bancohoras",
-            "root", 
+            "jdbc:mysql://localhost:3307/bancohoras",
+            "root",
             "usbw"
         );
     }

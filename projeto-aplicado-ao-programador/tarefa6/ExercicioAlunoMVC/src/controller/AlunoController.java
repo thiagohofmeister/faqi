@@ -1,9 +1,9 @@
-
 package controller;
 
 import java.util.ArrayList;
 import model.Aluno;
 import dao.AlunoDAO;
+import java.sql.SQLException;
 
 /**
  *
@@ -11,21 +11,28 @@ import dao.AlunoDAO;
  * @author Tiago Silveira
  */
 public class AlunoController extends Controller {
-    
+
     private AlunoDAO dao;
-    
+
     public AlunoController() {
         this.dao = new AlunoDAO();
     }
-    
+
     @Override
-    public ArrayList<Aluno> listar ()
-    {
-        return this.dao.buscarTodos();
+    public ArrayList<Aluno> listar() {
+        ArrayList<Aluno> lista = new ArrayList<>();
+
+        try {
+            lista = this.dao.buscarTodos();
+        } catch (SQLException e) {
+            lista = null;
+        }
+
+        return lista;
     }
 
     @Override
     public Aluno buscar(String ra) {
-        return this.dao.buscar(ra);
+        return new Aluno();
     }
 }
