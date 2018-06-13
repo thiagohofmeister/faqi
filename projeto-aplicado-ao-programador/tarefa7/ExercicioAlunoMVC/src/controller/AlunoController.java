@@ -33,6 +33,27 @@ public class AlunoController extends Controller {
 
     @Override
     public Aluno buscar(String ra) {
-        return new Aluno();
+        Aluno aluno = new Aluno();
+        
+        try {
+            aluno = this.dao.buscar(ra);
+        } catch (SQLException e) {
+            aluno = null;
+        }
+        
+        return aluno;
+    }
+
+    @Override
+    public Object buscarPorId(Integer id) {
+        Aluno aluno = new Aluno();
+        
+        try {
+            aluno = this.dao.buscarPorId(id);
+        } catch (SQLException e) {
+            aluno = null;
+        }
+        
+        return aluno;
     }
 }

@@ -1,0 +1,90 @@
+12
+Curso de PHP
+20
+13
+Palestra de empreendedorismo
+10
+4
+Curso de nodejs
+40
+5
+Aula de nivelamento de portugues
+4
+6
+Palestra de TI
+3
+7
+Aula de nivelamento de portugues
+4
+1
+Aula de nivelamento de portugues
+4
+2
+Aula de nivelamento de portugues
+4
+3
+Curso de nodejs
+40
+8
+Curso de nodejs
+40
+9
+Curso de nodejs
+40
+10
+Curso de nodejs
+40
+11
+Curso de PHP
+20
+14
+Curso de PHP
+20
+21
+Curso de PHP
+20
+22
+Curso de PHP
+20
+23
+Curso de PHP
+20
+24
+Palestra de empreendedorismo
+10
+25
+Palestra de empreendedorismo
+10
+26
+Palestra de empreendedorismo
+10
+27
+Palestra de empreendedorismo
+10
+28
+Palestra de empreendedorismo
+10
+29
+Aula de nivelamento de portugues
+4
+30
+Aula de nivelamento de portugues
+4
+31
+Aula de nivelamento de portugues
+4
+15
+Aula de nivelamento de portugues
+4
+17
+Aula de nivelamento de portugues
+4
+18
+Aula de nivelamento de portugues
+4
+19
+Aula de nivelamento de portugues
+4
+20
+Aula de nivelamento de portugues
+4
