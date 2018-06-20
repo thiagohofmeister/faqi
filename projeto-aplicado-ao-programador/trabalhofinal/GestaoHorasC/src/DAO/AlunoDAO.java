@@ -1,15 +1,9 @@
 
 package DAO;
 
-import Model.AbstractEntity;
 import Model.Aluno;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Abstração classes relacionadas ao banco de dados.
@@ -17,7 +11,11 @@ import java.util.logging.Logger;
  * @author Thiago Hofmeister
  * @author Tiago Silveira
  */
-public class AlunoDAO extends AbstractTemplateDAO {  
+public class AlunoDAO extends AbstractTemplateDAO<Aluno> {  
+
+    public AlunoDAO() {
+        this.collection = "Aluno";
+    }
 
     @Override
     public Aluno fromDocument(ResultSet rs)  {
@@ -30,4 +28,8 @@ public class AlunoDAO extends AbstractTemplateDAO {
         return (new Aluno());
     }
 
+    @Override
+    protected String toDocument(Aluno entity) {        
+        return Aluno.toDocument(entity);
+    }
 }

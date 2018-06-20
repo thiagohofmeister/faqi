@@ -16,10 +16,6 @@ public class Aluno extends AbstractEntity {
     private String email;
     private String ra;
 
-    public Aluno() {
-        this.table = "alunos";
-    }
-
     public String getTelefone() {
         return telefone;
     }
@@ -52,15 +48,50 @@ public class Aluno extends AbstractEntity {
         this.ra = ra;
     }
     
+    /**
+     * Retorna uma entidade de acordo com o result set do banco.
+     * 
+     * @param rs
+     * @return
+     * @throws SQLException 
+     */
     public static Aluno fromDocument (ResultSet rs) throws SQLException {
-        Aluno aluno = (new Aluno());
+        Aluno entity = (new Aluno());
         
-        aluno.setId(rs.getInt("id"));
-        aluno.setRa(rs.getString("ra"));
-        aluno.setNome(rs.getString("nome"));
-        aluno.setEmail(rs.getString("email"));
-        aluno.setTelefone(rs.getString("telefone"));
+        entity.setId(rs.getInt("id"));
+        entity.setRa(rs.getString("ra"));
+        entity.setNome(rs.getString("nome"));
+        entity.setEmail(rs.getString("email"));
+        entity.setTelefone(rs.getString("telefone"));
         
-        return aluno;
+        return entity;
+    }
+    
+    /**
+     * Retorna uma entidade de acordo com o result set do banco.
+     * 
+     * @param entity
+     * @return 
+     */
+    public static String toDocument (Aluno entity) {
+        String id = null;
+        
+        if (entity.getId() > 0) {
+            id = Integer.toString(entity.getId());
+        }
+        
+        return id + ",'" + 
+                entity.getTelefone() + "','" + 
+                entity.getNome() + "','" + 
+                entity.getEmail() + "','" +
+                entity.getRa() + "'";
+    }
+
+    @Override
+    public String toString() {
+        return "Telefone: " + telefone + 
+               "\nNome: " + nome + 
+               "\nEmail: " + email + 
+               "\nRA: " + ra;
     }
 }

@@ -1,7 +1,7 @@
 
 package DAO;
 
-import Model.AbstractEntity;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -16,8 +16,9 @@ public interface AbstractInterfaceDAO<E> {
      * Persiste uma entidade no banco de dados.
      * 
      * @param entity 
+     * @return  
      */
-    public void persist(E entity);
+    public int persist(E entity);
     
     /**
      * Busca um registro no banco pelo ID.
@@ -25,7 +26,7 @@ public interface AbstractInterfaceDAO<E> {
      * @param id
      * @return 
      */
-    public E findById(Long id);
+    public E findById(Long id) throws SQLException;
     
     /**
      * Retorna todos os registros de uma tabela do banco.

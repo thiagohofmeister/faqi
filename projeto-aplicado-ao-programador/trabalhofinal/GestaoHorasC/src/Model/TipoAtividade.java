@@ -1,6 +1,9 @@
 
 package Model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Modelagem de dados de Tipo de Atividade.
  * 
@@ -8,34 +11,15 @@ package Model;
  * @author Tiago Silveira
  */
 public class TipoAtividade extends AbstractEntity {
-    protected Aluno aluno;
-    protected Atividade atividade;
-    protected String date;
+    protected double limiteHoras;
     protected String descricao;
-    protected float totalHoras;
 
-    public Aluno getAluno() {
-        return aluno;
+    public double getLimiteHoras() {
+        return limiteHoras;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
-
-    public Atividade getAtividade() {
-        return atividade;
-    }
-
-    public void setAtividade(Atividade atividade) {
-        this.atividade = atividade;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
+    public void setLimiteHoras(double limiteHoras) {
+        this.limiteHoras = limiteHoras;
     }
 
     public String getDescricao() {
@@ -45,12 +29,39 @@ public class TipoAtividade extends AbstractEntity {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-    public float getTotalHoras() {
-        return totalHoras;
+    
+    /**
+     * Retorna uma entidade de acordo com o result set do banco.
+     * 
+     * @param rs
+     * @return
+     * @throws SQLException 
+     */
+    public static TipoAtividade fromDocument (ResultSet rs) throws SQLException {
+        TipoAtividade entity = (new TipoAtividade());
+        
+        entity.setId(rs.getInt("id"));
+        entity.setLimiteHoras(rs.getDouble("limiteHoras"));
+        entity.setDescricao(rs.getString("descricao"));
+        
+        return entity;
     }
-
-    public void setTotalHoras(float totalHoras) {
-        this.totalHoras = totalHoras;
+    
+    /**
+     * Retorna uma entidade de acordo com o result set do banco.
+     * 
+     * @param entity
+     * @return 
+     */
+    public static String toDocument (TipoAtividade entity) {
+        String id = null;
+        
+        if (entity.getId() > 0) {
+            id = Integer.toString(entity.getId());
+        }
+        
+        return id + "," + 
+                entity.getLimiteHoras() + ",'" + 
+                entity.getDescricao() + "'";
     }
 }

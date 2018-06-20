@@ -9,8 +9,6 @@ package Model;
  */
 public abstract class AbstractEntity<E> {
     protected int id;
-    
-    public static String table;
 
     public int getId() {
         return id;
@@ -18,9 +16,5 @@ public abstract class AbstractEntity<E> {
 
     public void setId(int id) {
         this.id = id;
-    }
-    
-    public static String getTable () {
-        return table;
     }
 }

@@ -5,9 +5,8 @@
  */
 package DAO;
 
-import Model.AbstractEntity;
-import Model.Aluno;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,6 +22,8 @@ import java.util.logging.Logger;
 public abstract class AbstractTemplateDAO<E> implements AbstractInterfaceDAO<E> {
 
     protected ConnectionManager db;
+    
+    protected String collection;
 
     public AbstractTemplateDAO() {
         this.db = ConnectionManager.getInstance();
@@ -35,15 +36,65 @@ public abstract class AbstractTemplateDAO<E> implements AbstractInterfaceDAO<E> 
      * @return 
      */
     protected abstract E fromDocument(ResultSet rs);
+    
+    /**
+     * Retorna uma string para inserir os dados no banco de dados.
+     * 
+     * @param entity
+     * @return 
+     */
+    protected abstract String toDocument(E entity);
 
     @Override
-    public void persist(E entity) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int persist(E entity) {
+        int id = 0;
+        
+        try {
+            Connection conn = this.db.getConnection();
+            Statement stat = conn.createStatement();
+            
+            String sql = "insert into " + collection + " values (" + this.toDocument(entity) + ")";
+            
+            PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.executeUpdate();
+            
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()){
+                id = rs.getInt(1);
+            }
+            
+        } catch (SQLException se) {
+            
+        }
+        
+        return id;
     }
 
     @Override
-    public E findById(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public E findById(Long id) throws SQLException {
+        Connection conn = this.db.getConnection();
+        Statement stat = conn.createStatement();
+
+        try {
+            String sql = "select * from " + collection + " where id = ?";
+
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setLong(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                System.out.println("Teste");
+                return this.fromDocument(rs);
+            }
+        } catch (SQLException se) {
+            throw new SQLException("Erro ao buscar dados no Banco de Dados! " + se.getMessage());
+        } finally {
+            stat.close();
+            conn.close();
+        }
+        
+        throw new SQLException("Nenhum " + collection + " encontrado para o id: " + id);
     }
 
     @Override
@@ -55,7 +106,9 @@ public abstract class AbstractTemplateDAO<E> implements AbstractInterfaceDAO<E> 
             Statement stat = conn.createStatement();
             
             try {
-                String sql = "select * from " + AbstractEntity.getTable();
+                String sql = "select * from " + collection;
+                
+                System.out.println(sql);
                 
                 ResultSet rs = stat.executeQuery(sql);
                 
