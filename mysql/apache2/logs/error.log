@@ -1,0 +1,11 @@
+[Tue Jun 19 19:15:55.967767 2018] [mpm_winnt:notice] [pid 4912:tid 384] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
+[Tue Jun 19 19:15:55.967767 2018] [mpm_winnt:notice] [pid 4912:tid 384] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
+[Tue Jun 19 19:15:55.967767 2018] [core:notice] [pid 4912:tid 384] AH00094: Command line: 'F:\\faqi\\mysql/apache2/bin/httpd_usbwv8.exe -d F:/faqi/mysql/apache2'
+[Tue Jun 19 19:15:56.166778 2018] [mpm_winnt:notice] [pid 4912:tid 384] AH00418: Parent: Created child process 3172
+[Tue Jun 19 19:15:56.631805 2018] [mpm_winnt:notice] [pid 3172:tid 400] AH00354: Child: Starting 64 worker threads.
+[Tue Jun 19 19:17:38.852651 2018] [core:warn] [pid 2784:tid 152] AH00098: pid file F:/faqi/mysql/apache2/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Tue Jun 19 19:17:38.873653 2018] [mpm_winnt:notice] [pid 2784:tid 152] AH00455: Apache/2.4.6 (Win32) PHP/5.4.17 configured -- resuming normal operations
+[Tue Jun 19 19:17:38.873653 2018] [mpm_winnt:notice] [pid 2784:tid 152] AH00456: Apache Lounge VC10 Server built: Jul 16 2013 11:15:41
+[Tue Jun 19 19:17:38.873653 2018] [core:notice] [pid 2784:tid 152] AH00094: Command line: 'F:\\faqi\\mysql/apache2/bin/httpd_usbwv8.exe -d F:/faqi/mysql/apache2'
+[Tue Jun 19 19:17:38.933656 2018] [mpm_winnt:notice] [pid 2784:tid 152] AH00418: Parent: Created child process 3080
+[Tue Jun 19 19:17:39.287676 2018] [mpm_winnt:notice] [pid 3080:tid 400] AH00354: Child: Starting 64 worker threads.
