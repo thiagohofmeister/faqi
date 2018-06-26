@@ -84,7 +84,6 @@ public abstract class AbstractTemplateDAO<E> implements AbstractInterfaceDAO<E> 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                System.out.println("Teste");
                 return this.fromDocument(rs);
             }
         } catch (SQLException se) {
@@ -107,8 +106,6 @@ public abstract class AbstractTemplateDAO<E> implements AbstractInterfaceDAO<E> 
             
             try {
                 String sql = "select * from " + collection;
-                
-                System.out.println(sql);
                 
                 ResultSet rs = stat.executeQuery(sql);
                 

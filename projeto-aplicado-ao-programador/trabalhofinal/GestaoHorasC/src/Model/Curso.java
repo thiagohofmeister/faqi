@@ -75,4 +75,11 @@ public class Curso extends AbstractEntity {
                 entity.getNome() + "','" + 
                 entity.getCodigo()+ "'";
     }
+
+    @Override
+    public String toString() {
+        return "Total de Horas: " + totalDeHoras + 
+               "\nNome: " + nome + 
+               "\nCódigo: " + codigo;
+    }
 }
