@@ -91,13 +91,13 @@ public class GUICadTipoAtividade extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1)
-                            .addComponent(jtCodigo)
+                            .addComponent(jtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                             .addComponent(jLabel2)
                             .addComponent(jtLimiteHoras)
                             .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jcCurso, 0, 154, Short.MAX_VALUE))
-                        .addGap(0, 359, Short.MAX_VALUE)))
+                            .addComponent(jLabel4))
+                        .addGap(0, 359, Short.MAX_VALUE))
+                    .addComponent(jcCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

@@ -78,8 +78,6 @@ public class Curso extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "Total de Horas: " + totalDeHoras + 
-               "\nNome: " + nome + 
-               "\nCódigo: " + codigo;
+        return nome;
     }
 }
