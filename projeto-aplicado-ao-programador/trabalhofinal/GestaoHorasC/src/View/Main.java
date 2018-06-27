@@ -17,6 +17,7 @@ import javax.swing.event.InternalFrameListener;
 public class Main extends javax.swing.JFrame implements InternalFrameListener {
 
     private boolean flagCadTipoAtividade = false;
+    private boolean flagCadCurso = false;
     
     /**
      * Creates new form Main
@@ -37,6 +38,7 @@ public class Main extends javax.swing.JFrame implements InternalFrameListener {
         jAreaTrabalho = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,6 +55,14 @@ public class Main extends javax.swing.JFrame implements InternalFrameListener {
         );
 
         jMenu1.setText("Cadastrar");
+
+        jMenuItem2.setText("Curso");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
 
         jMenuItem1.setText("Atividade");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -85,9 +95,12 @@ public class Main extends javax.swing.JFrame implements InternalFrameListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
         abrirGUICadTipoAtividade();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        abrirGUICadCurso();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +146,16 @@ public class Main extends javax.swing.JFrame implements InternalFrameListener {
             this.flagCadTipoAtividade = true;
         }
     }
+    
+    private void abrirGUICadCurso () {
+        if (!this.flagCadCurso) {
+            GUICadCurso gcc = new GUICadCurso();
+            jAreaTrabalho.add(gcc);
+            gcc.setVisible(true);
+            
+            this.flagCadCurso = true;
+        }
+    }
 
     @Override
     public void internalFrameOpened(InternalFrameEvent e) {
@@ -148,6 +171,8 @@ public class Main extends javax.swing.JFrame implements InternalFrameListener {
     public void internalFrameClosed(InternalFrameEvent e) {
         if (e.getInternalFrame() instanceof GUICadTipoAtividade) {
             this.flagCadTipoAtividade = false;
+        } else if (e.getInternalFrame() instanceof GUICadCurso) {
+            this.flagCadCurso = false;
         }
     }
 
@@ -176,5 +201,6 @@ public class Main extends javax.swing.JFrame implements InternalFrameListener {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 }
