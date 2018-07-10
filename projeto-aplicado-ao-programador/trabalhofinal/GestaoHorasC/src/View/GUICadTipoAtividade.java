@@ -15,8 +15,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author ALUNOS
+ * Tela cadastro de tipo de atividade.
+ * 
+ * @author Thiago Hofmeister
+ * @author Tiago Silveira
  */
 public class GUICadTipoAtividade extends javax.swing.JInternalFrame {
 

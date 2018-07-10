@@ -5,21 +5,21 @@
  */
 package View;
 
-import DAO.CursoDAO;
-import Model.Curso;
+import DAO.AlunoDAO;
+import Model.Aluno;
 
 /**
- * Tela cadastro de curso.
+ * Tela cadastro de aluno.
  * 
  * @author Thiago Hofmeister
  * @author Tiago Silveira
  */
-public class GUICadCurso extends javax.swing.JInternalFrame {
+public class GUICadAluno extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form GUICadCurso
      */
-    public GUICadCurso() {
+    public GUICadAluno() {
         initComponents();
     }
 
@@ -35,19 +35,21 @@ public class GUICadCurso extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jtNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jtCodigo = new javax.swing.JTextField();
+        jtTelefone = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jtTotalHoras = new javax.swing.JTextField();
+        jtEmail = new javax.swing.JTextField();
         jbCadastrar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jtRA = new javax.swing.JTextField();
 
         setClosable(true);
         setTitle("Cadastro de Curso");
 
         jLabel1.setText("Nome");
 
-        jLabel2.setText("Código");
+        jLabel2.setText("Telefone");
 
-        jLabel3.setText("Total de Horas");
+        jLabel3.setText("E-mail");
 
         jbCadastrar.setText("Cadastrar");
         jbCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -56,23 +58,29 @@ public class GUICadCurso extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setText("RA");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1)
-                    .addComponent(jtNome)
-                    .addComponent(jLabel2)
-                    .addComponent(jtCodigo)
-                    .addComponent(jLabel3)
-                    .addComponent(jtTotalHoras, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(313, Short.MAX_VALUE)
-                .addComponent(jbCadastrar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 303, Short.MAX_VALUE)
+                        .addComponent(jbCadastrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1)
+                            .addComponent(jtNome)
+                            .addComponent(jLabel2)
+                            .addComponent(jtTelefone)
+                            .addComponent(jLabel3)
+                            .addComponent(jtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                            .addComponent(jLabel4)
+                            .addComponent(jtRA))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -85,27 +93,32 @@ public class GUICadCurso extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtTotalHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtRA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jbCadastrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCadastrarActionPerformed
-        Curso curso = new Curso();
-        curso.setNome(jtNome.getText());
-        curso.setCodigo(Integer.parseInt(jtCodigo.getText()));
-        curso.setTotalDeHoras(Integer.parseInt(jtTotalHoras.getText()));
+        Aluno aluno = new Aluno();
+        aluno.setNome(jtNome.getText());
+        aluno.setTelefone(jtTelefone.getText());
+        aluno.setRa(jtRA.getText());
+        aluno.setEmail(jtEmail.getText());
         
-        CursoDAO cDAO = new CursoDAO();
-        cDAO.persist(curso);
+        AlunoDAO aDAO = new AlunoDAO();
+        aDAO.persist(aluno);
     }//GEN-LAST:event_jbCadastrarActionPerformed
 
 
@@ -113,9 +126,11 @@ public class GUICadCurso extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton jbCadastrar;
-    private javax.swing.JTextField jtCodigo;
+    private javax.swing.JTextField jtEmail;
     private javax.swing.JTextField jtNome;
-    private javax.swing.JTextField jtTotalHoras;
+    private javax.swing.JTextField jtRA;
+    private javax.swing.JTextField jtTelefone;
     // End of variables declaration//GEN-END:variables
 }
